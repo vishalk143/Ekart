@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+
+
+
+
+<div class="row mt-5">
+
+    <div class="col-md-6 mx-auto">
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><h3>Email address</h3></label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Email">
+        </div><!---email end-->
+
+       <div class="mb-3">
+        <label for="inputPassword5" class="form-label"><h3>Password</h3></label>
+        <input type="password" id="inputPassword5" placeholder="Enter Password" class="form-control"
+            aria-labelledby="passwordHelpBlock">
+       </div>
+
+        
+       <div class="mb-3">
+        <div id="passwordHelpBlock" class="form-text">
+            Your password must be 8-20 characters long.
+        </div><!--password end-->
+       </div>
+
+       
+       <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Login</button>
+        
+       </div>
+        
+            
+    </div>
+</div>
+
+{% endblock 'main' %}

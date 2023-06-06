@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <h3>Customer Information</h3>
+                <hr>
+                {% for x in products|slice:'1' %}
+                <b>Name:</b> {{x.uid.first_name}}&nbsp;&nbsp;&nbsp;{{x.uid.last_name}} <br>
+                <b>Email Id:</b> {{x.uid.email}}
+                {% endfor %}
+            </div>
+            
+            {% for x in products %}
+            <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{x.pid.pimage.url}}" class="img-thumbnail" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <p><strong>Product Name:</strong>{{x.pid.name}}</p>
+                        {% if x.pid.cat == 1 %}
+                        <p><strong>Category:</strong>Iphone</p>
+                        {% elif x.pid.cat == 2 %}
+                        <p><strong>Category:</strong>Ipad</p>
+                        {% elif x.pid.cat == 3 %}
+                        <p><strong>Category:</strong>Apple Watch</p>
+                        {% elif x.pid.cat == 4 %}
+                        <p><strong>Category:</strong>MacDesktop</p>
+                        {% elif x.pid.cat == 5 %}
+                        <p><strong>Category:</strong>Apple TV</p>
+                        {% elif x.pid.cat == 6 %}
+                        <p><strong>Category:</strong>Ipod Touch</p>
+                        {% else %}
+                        <p><strong>Category:</strong>Acceserise</p>
+                        {% endif %}
+        
+        
+                        <p><strong>Price Per Unit:</strong>{{x.pid.price}}</p>
+        
+                        <p><strong>Qty:</strong>&nbsp;&nbsp;
+                            <a href="/changeqty/{{x.pid.id}}/0"><button class="btn btn-danger">-</button></a>
+                            <input type="text" value="{{x.qty}}" style="width: 2rem; border-radius: 3px; text-align: center;">
+                            <a href="/changeqty/{{x.pid.id}}/1"><button class="btn btn-success">+</button></a>
+                            <br>
+                            <a href="/remove/{{x.id}}" class="text-decoration-none text-dark "><button class="btn btn-danger mt-4">Remove</button></a>
+                            <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">{{msg}}</div>
+
+        
+        
+                        </p>
+
+                    </div>
+                </div>
+               
+            </div>
+
+            {% endfor %}
+
+
+
+        </div>
+        <div class="col-md-3 ">
+            <div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded"><h3>Price Details</h3> <br>
+                <h5>items:({{nitems}})&nbsp; RS-{{total}}</h5>
+                <a href="/placeorder"><button class="btn btn-warning">PlaceOrder </button></a>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock 'main' %}
